@@ -45,7 +45,7 @@ if __name__ == "__main__":
             tmp = pr @ su + b  # tmp[node] = b + np.dot(su, pr[node, :])
             su = np.copy(tmp)
 
-        # su = np.linalg.pinv(np.eye(N) - pr) @ (np.eye(N) - pr ** P) @ b
+        su = b @ (np.eye(N) - pr ** P) @ np.linalg.pinv(np.eye(N) - pr)
 
         # print("Answer is ", su[0], "\nAll elements are", su)
         print("Case #{}: {}".format(cntT + 1, su[0]))
